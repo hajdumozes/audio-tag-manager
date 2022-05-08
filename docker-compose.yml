@@ -4,9 +4,6 @@ services:
   postgres:
     image: postgres:13-alpine
     restart: always
-    build:
-      context: .
-      dockerfile: DbDockerfile
     ports:
       - "5432:5432"
     environment:
