@@ -11,3 +11,10 @@ spring:
     kafka:
       binder:
         brokers: ${KAFKA_SERVER}
+  datasource:
+    username: ${DATASOURCE_USERNAME:mozeshajdu}
+    password: ${DATASOURCE_PASSWORD:mozeshajdu}
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/audiotag}
+  jpa:
+    hibernate.ddl-auto: ${HIBERNATE_DDL_AUTO:update}
+    show-sql: ${SHOW_SQL:false}

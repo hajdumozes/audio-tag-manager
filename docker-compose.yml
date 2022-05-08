@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:13-alpine
+    restart: always
+    build:
+      context: .
+      dockerfile: DbDockerfile
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: mozeshajdu
+      POSTGRES_PASSWORD: mozeshajdu
+      POSTGRES_DB: audiotag
+    volumes:
+      - ./data:/var/lib/postgresql/data\
