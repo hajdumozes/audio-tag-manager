@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
-import java.util.List;
+import java.util.Set;
 
 
 @Data
@@ -18,13 +18,13 @@ import java.util.List;
 public class AudioTagMessage {
 
     String title;
-    List<String> artists;
-    List<String> albumArtists;
+    Set<String> artists;
+    Set<String> albumArtists;
     String album;
     String year;
     String track;
     String composer;
-    List<String> genres;
+    Set<String> genres;
     String grouping;
 }
 
