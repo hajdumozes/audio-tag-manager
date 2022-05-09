@@ -1,0 +1,2 @@
+- replace eager fetching with possibly transactionals
+- split genres into substrings

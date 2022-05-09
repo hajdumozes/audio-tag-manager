@@ -1,0 +1,26 @@
+package com.mozeshajdu.audiotagmanager.service;
+
+import com.mozeshajdu.audiotagmanager.entity.AudioTag;
+import com.mozeshajdu.audiotagmanager.persistance.AudioTagRepository;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+@Slf4j
+public class AudioTagService {
+    AudioTagRepository audioTagRepository;
+
+    public void save(AudioTag audioTag) {
+        try {
+            audioTagRepository.save(audioTag);
+        } catch (DataIntegrityViolationException e) {
+            log.error(String.format("Could not save tag (%s) due to constraint violation", audioTag.toString()));
+        }
+    }
+}

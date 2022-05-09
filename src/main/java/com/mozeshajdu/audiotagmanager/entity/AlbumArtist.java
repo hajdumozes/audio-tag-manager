@@ -4,7 +4,6 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import java.util.Set;
 
 @Table(name = "album_artist")
@@ -29,7 +27,6 @@ public class AlbumArtist {
     @Column(name = "name", nullable = false, unique = true)
     String name;
 
-    @Transient
-    @ManyToMany(mappedBy = "albumArtists", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "albumArtists", fetch = FetchType.EAGER)
     Set<AudioTag> audioTags;
 }
