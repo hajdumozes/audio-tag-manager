@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.Column;
@@ -25,6 +26,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@ToString
 public class AudioTag {
 
     @Id
@@ -67,3 +69,4 @@ public class AudioTag {
     @Column(name = "grouping")
     String grouping;
 }
+
