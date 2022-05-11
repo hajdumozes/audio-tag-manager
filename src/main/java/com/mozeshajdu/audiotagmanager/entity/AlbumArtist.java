@@ -1,7 +1,8 @@
 package com.mozeshajdu.audiotagmanager.entity;
 
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.Column;
@@ -15,7 +16,8 @@ import java.util.Set;
 
 @Table(name = "album_artist")
 @Entity
-@Data
+@Getter
+@Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class AlbumArtist {
 

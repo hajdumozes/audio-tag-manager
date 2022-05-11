@@ -9,12 +9,18 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Slf4j
 public class AudioTagService {
     AudioTagRepository audioTagRepository;
+
+    public List<AudioTag> findAll() {
+        return audioTagRepository.findAll();
+    }
 
     public void save(AudioTag audioTag) {
         try {
