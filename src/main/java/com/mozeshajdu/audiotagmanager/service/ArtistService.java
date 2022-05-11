@@ -17,12 +17,12 @@ public class ArtistService {
 
     public Artist of(String artistName) {
         return artistRepository.findArtistByName(artistName)
-                .orElseGet(save(artistName));
+                .orElseGet(create(artistName));
     }
 
-    private Supplier<Artist> save(String name) {
+    private Supplier<Artist> create(String name) {
         Artist artist = new Artist();
         artist.setName(name);
-        return () -> artistRepository.save(artist);
+        return () -> artist;
     }
 }

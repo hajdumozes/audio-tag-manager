@@ -6,7 +6,6 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.function.Supplier;
 
@@ -16,15 +15,14 @@ import java.util.function.Supplier;
 public class AlbumArtistService {
     AlbumArtistRepository albumArtistRepository;
 
-    @Transactional
     public AlbumArtist of(String artistName) {
         return albumArtistRepository.findAlbumArtistByName(artistName)
-                .orElseGet(save(artistName));
+                .orElseGet(create(artistName));
     }
 
-    private Supplier<AlbumArtist> save(String name) {
+    private Supplier<AlbumArtist> create(String name) {
         AlbumArtist albumArtist = new AlbumArtist();
         albumArtist.setName(name);
-        return () -> albumArtistRepository.save(albumArtist);
+        return () -> albumArtist;
     }
 }

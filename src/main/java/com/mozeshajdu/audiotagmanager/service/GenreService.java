@@ -6,7 +6,6 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.function.Supplier;
 
@@ -16,15 +15,14 @@ import java.util.function.Supplier;
 public class GenreService {
     GenreRepository genreRepository;
 
-    @Transactional
     public Genre of(String genre) {
         return genreRepository.findGenreByName(genre)
-                .orElseGet(save(genre));
+                .orElseGet(create(genre));
     }
 
-    private Supplier<Genre> save(String name) {
+    private Supplier<Genre> create(String name) {
         Genre genre = new Genre();
         genre.setName(name);
-        return () -> genreRepository.save(genre);
+        return () -> genre;
     }
 }

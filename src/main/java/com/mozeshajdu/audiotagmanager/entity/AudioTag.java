@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -39,13 +40,13 @@ public class AudioTag {
     @Column(name = "album", nullable = false)
     String album;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "audio_tag_artist",
             joinColumns = @JoinColumn(foreignKey = @ForeignKey(name = "audio_tag_id")),
             inverseJoinColumns = @JoinColumn(foreignKey = @ForeignKey(name = "artist_id")))
     Set<Artist> artists;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "audio_tag_album_artist",
             joinColumns = @JoinColumn(foreignKey = @ForeignKey(name = "audio_tag_id")),
             inverseJoinColumns = @JoinColumn(foreignKey = @ForeignKey(name = "album_artist_id")))
@@ -60,7 +61,7 @@ public class AudioTag {
     @Column(name = "composer")
     String composer;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "audio_tag_genre",
             joinColumns = @JoinColumn(foreignKey = @ForeignKey(name = "audio_tag_id")),
             inverseJoinColumns = @JoinColumn(foreignKey = @ForeignKey(name = "genre_id")))
