@@ -61,9 +61,6 @@ public class AudioTag {
     @Column(name = "track")
     String track;
 
-    @Column(name = "composer")
-    String composer;
-
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "audio_tag_genre",
             joinColumns = @JoinColumn(foreignKey = @ForeignKey(name = "audio_tag_id")),
@@ -72,6 +69,9 @@ public class AudioTag {
 
     @Column(name = "grouping")
     String grouping;
+
+    @Column(name = "rating")
+    String rating;
 
     @OneToOne
     @JoinColumn(name = "spotify_track_id", referencedColumnName = "id")

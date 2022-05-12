@@ -17,7 +17,7 @@ public class AudioTagDto {
     Set<AlbumArtistDto> albumArtists;
     String year;
     String track;
-    String composer;
     Set<GenreDto> genres;
     String grouping;
+    String rating;
 }

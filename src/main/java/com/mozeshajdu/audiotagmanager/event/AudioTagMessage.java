@@ -23,8 +23,8 @@ public class AudioTagMessage {
     String album;
     String year;
     String track;
-    String composer;
     Set<String> genres;
     String grouping;
+    String rating;
 }
 
