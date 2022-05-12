@@ -30,6 +30,9 @@ public class SpotifyTrack {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    @Column(name = "spotify_id", nullable = false, unique = true)
+    String spotifyId;
+
     @Column(name = "name")
     String name;
 

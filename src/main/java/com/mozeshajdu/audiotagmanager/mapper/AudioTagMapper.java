@@ -19,6 +19,7 @@ import java.util.List;
 @Mapper(componentModel = "spring", uses = {ArtistService.class, AlbumArtistService.class, GenreService.class})
 public interface AudioTagMapper {
 
+    @Mapping(target = "spotifyTrack", ignore = true)
     @Mapping(target = "id", ignore = true)
     AudioTag of(AudioTagMessage source);
 

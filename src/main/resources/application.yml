@@ -3,12 +3,15 @@ server:
 spring:
   cloud.stream:
     function:
-      definition: consumeAudioTags
+      definition: consumeAudioTags;consumeSpotifyTracks
       bindings:
         consumeAudioTags-in-0: audio-tag
+        consumeSpotifyTracks-in-0: spotify-track
     bindings:
       audio-tag:
         destination: ${KAFKA_AUDIO_TAG_TOPIC}
+      spotify-track:
+        destination: ${KAFKA_SPOTIFY_TRACK_TOPIC}
     default-binder: kafka
     kafka:
       binder:
