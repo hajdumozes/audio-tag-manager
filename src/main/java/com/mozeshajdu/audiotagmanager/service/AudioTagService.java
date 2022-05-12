@@ -22,6 +22,10 @@ public class AudioTagService {
         return audioTagRepository.findAll();
     }
 
+    public List<AudioTag> findTagsWithoutSpotifyConnection() {
+        return audioTagRepository.findAudioTagsBySpotifyTrackIsNull();
+    }
+
     public void save(AudioTag audioTag) {
         try {
             audioTagRepository.save(audioTag);

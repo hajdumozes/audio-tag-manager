@@ -18,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import java.util.Set;
@@ -71,5 +72,9 @@ public class AudioTag {
 
     @Column(name = "grouping")
     String grouping;
+
+    @OneToOne
+    @JoinColumn(name = "spotify_track_id", referencedColumnName = "id")
+    SpotifyTrack spotifyTrack;
 }
 

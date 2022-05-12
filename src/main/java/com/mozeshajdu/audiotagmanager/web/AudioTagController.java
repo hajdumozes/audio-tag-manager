@@ -28,4 +28,10 @@ public class AudioTagController {
         List<AudioTag> audioTags = audioTagService.findAll();
         return ResponseEntity.ok(audioTagMapper.toDtoList(audioTags));
     }
+
+    @GetMapping("/unconnected")
+    public ResponseEntity<List<AudioTagDto>> findUnconnected() {
+        List<AudioTag> audioTags = audioTagService.findTagsWithoutSpotifyConnection();
+        return ResponseEntity.ok(audioTagMapper.toDtoList(audioTags));
+    }
 }
