@@ -25,6 +25,7 @@ public interface AudioTagMapper {
 
     List<AudioTagDto> toDtoList(List<AudioTag> source);
 
+    @Mapping(target = "spotifyTrackId", source = "spotifyTrack.spotifyId")
     AudioTagDto toDto(AudioTag source);
 
     ArtistDto toDto(Artist source);

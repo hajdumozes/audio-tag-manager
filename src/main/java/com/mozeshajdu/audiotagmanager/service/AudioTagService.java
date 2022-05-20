@@ -26,6 +26,10 @@ public class AudioTagService {
         return audioTagRepository.findAudioTagsBySpotifyTrackIsNull();
     }
 
+    public List<AudioTag> findTagsWithSpotifyConnection() {
+        return audioTagRepository.findAudioTagsBySpotifyTrackIsNotNull();
+    }
+
     public AudioTag findById(Long id) {
         return audioTagRepository.findById(id).orElse(null);
     }

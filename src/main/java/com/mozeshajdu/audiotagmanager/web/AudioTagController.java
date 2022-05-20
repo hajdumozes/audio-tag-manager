@@ -35,9 +35,15 @@ public class AudioTagController {
         return ResponseEntity.ok(audioTagMapper.toDto(audioTagService.findById(id)));
     }
 
-    @GetMapping("/unconnected")
-    public ResponseEntity<List<AudioTagDto>> findUnconnected() {
+    @GetMapping("/disconnected")
+    public ResponseEntity<List<AudioTagDto>> findDisconnected() {
         List<AudioTag> audioTags = audioTagService.findTagsWithoutSpotifyConnection();
+        return ResponseEntity.ok(audioTagMapper.toDtoList(audioTags));
+    }
+
+    @GetMapping("/connected")
+    public ResponseEntity<List<AudioTagDto>> findConnected() {
+        List<AudioTag> audioTags = audioTagService.findTagsWithSpotifyConnection();
         return ResponseEntity.ok(audioTagMapper.toDtoList(audioTags));
     }
 }

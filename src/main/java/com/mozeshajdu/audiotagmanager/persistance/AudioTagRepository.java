@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface AudioTagRepository extends JpaRepository<AudioTag, Long> {
     List<AudioTag> findAudioTagsBySpotifyTrackIsNull();
+    List<AudioTag> findAudioTagsBySpotifyTrackIsNotNull();
 }

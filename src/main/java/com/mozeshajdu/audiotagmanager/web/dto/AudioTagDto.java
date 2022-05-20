@@ -20,4 +20,5 @@ public class AudioTagDto {
     Set<GenreDto> genres;
     String grouping;
     String rating;
+    String spotifyTrackId;
 }
