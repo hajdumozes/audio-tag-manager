@@ -4,6 +4,8 @@ import com.mozeshajdu.audiotagmanager.entity.SpotifyTrack;
 import com.mozeshajdu.audiotagmanager.event.SpotifyTrackMessage;
 import com.mozeshajdu.audiotagmanager.service.ArtistService;
 import com.mozeshajdu.audiotagmanager.service.AudioTagService;
+import com.mozeshajdu.audiotagmanager.service.SpotifyTrackService;
+import com.mozeshajdu.audiotagmanager.web.dto.SpotifyTrackDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -18,4 +20,6 @@ public interface SpotifyTrackMapper {
     SpotifyTrack of(SpotifyTrackMessage source);
 
     List<SpotifyTrack> toDtoList(List<SpotifyTrack> source);
+
+    SpotifyTrackDto of(SpotifyTrack source);
 }

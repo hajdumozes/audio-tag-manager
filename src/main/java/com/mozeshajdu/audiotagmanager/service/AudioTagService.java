@@ -35,6 +35,10 @@ public class AudioTagService {
         return audioTagRepository.findById(id);
     }
 
+    public AudioTag of(Long id) {
+        return findById(id).orElse(null);
+    }
+
     public void save(AudioTag audioTag) {
         try {
             audioTagRepository.save(audioTag);

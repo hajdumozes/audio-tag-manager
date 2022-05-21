@@ -16,7 +16,7 @@ import org.mapstruct.Mapping;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {ArtistService.class, AlbumArtistService.class, GenreService.class})
+@Mapper(componentModel = "spring", uses = {ArtistService.class, AlbumArtistService.class, GenreService.class, SpotifyTrackMapper.class})
 public interface AudioTagMapper {
 
     @Mapping(target = "spotifyTrack", ignore = true)
@@ -25,7 +25,7 @@ public interface AudioTagMapper {
 
     List<AudioTagDto> toDtoList(List<AudioTag> source);
 
-    @Mapping(target = "spotifyTrackId", source = "spotifyTrack.spotifyId")
+    //    @Mapping(target = "spotifyTrackId", source = "spotifyTrack.spotifyId")
     AudioTagDto toDto(AudioTag source);
 
     ArtistDto toDto(Artist source);
