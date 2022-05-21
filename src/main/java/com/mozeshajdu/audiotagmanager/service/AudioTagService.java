@@ -10,6 +10,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -30,8 +31,8 @@ public class AudioTagService {
         return audioTagRepository.findAudioTagsBySpotifyTrackIsNotNull();
     }
 
-    public AudioTag findById(Long id) {
-        return audioTagRepository.findById(id).orElse(null);
+    public Optional<AudioTag> findById(Long id) {
+        return audioTagRepository.findById(id);
     }
 
     public void save(AudioTag audioTag) {

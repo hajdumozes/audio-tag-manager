@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/audio-tags", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/audio-tag", produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class AudioTagController {
@@ -31,8 +31,11 @@ public class AudioTagController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AudioTagDto> findById(@PathVariable  Long id) {
-        return ResponseEntity.ok(audioTagMapper.toDto(audioTagService.findById(id)));
+    public ResponseEntity<AudioTagDto> findById(@PathVariable Long id) {
+        AudioTagDto audioTagDto = audioTagService.findById(id)
+                .map(audioTagMapper::toDto)
+                .orElse(null);
+        return ResponseEntity.ok(audioTagDto);
     }
 
     @GetMapping("/disconnected")
