@@ -18,6 +18,11 @@ public interface AudioTagRepository extends JpaRepository<AudioTag, Long>, JpaSp
     List<AudioTag> findAudioTagsBySpotifyTrackIsNotNull();
 
     static Specification<AudioTag> titleContains(String title) {
-        return (audioTag, criteriaQuery, criteriaBuilder) -> criteriaBuilder.like(audioTag.get("title"), String.format(ANYTHING_BEFORE_AFTER_FORMAT, title));
+        return (audioTag, criteriaQuery, criteriaBuilder) ->
+                criteriaBuilder.like(
+                        criteriaBuilder.lower(
+                                audioTag.get("title")), String.format(ANYTHING_BEFORE_AFTER_FORMAT, title.toLowerCase()
+                        )
+                );
     }
 }
