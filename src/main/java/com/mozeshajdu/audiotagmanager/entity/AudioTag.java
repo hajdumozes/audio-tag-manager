@@ -71,7 +71,7 @@ public class AudioTag {
     String grouping;
 
     @Column(name = "rating")
-    String rating;
+    Integer rating;
 
     @OneToOne
     @JoinColumn(name = "spotify_track_id", referencedColumnName = "id")

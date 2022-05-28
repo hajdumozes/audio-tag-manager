@@ -1,3 +1,2 @@
 - save database to a file, which could be stored on cloud
-- save info, that track is liked in audio-tag-manager (add liked flag in db)
 - update tags by collecting them again (consumer should check db, then modify on match)

@@ -19,6 +19,6 @@ public class AudioTagDto {
     String track;
     Set<GenreDto> genres;
     String grouping;
-    String rating;
+    Integer rating;
     SpotifyTrackDto spotifyTrack;
 }

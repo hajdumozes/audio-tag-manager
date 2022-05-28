@@ -8,11 +8,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+import static com.mozeshajdu.audiotagmanager.persistance.AudioTagRepository.ratingAtLeast;
 import static com.mozeshajdu.audiotagmanager.persistance.AudioTagRepository.titleContains;
 
 @Service
@@ -23,7 +25,10 @@ public class AudioTagService {
     AudioTagRepository audioTagRepository;
 
     public List<AudioTag> find(AudioTagQuery audioTagQuery) {
-        return audioTagRepository.findAll(titleContains(audioTagQuery.getTitle()));
+        return audioTagRepository.findAll(
+                Specification.where(titleContains(audioTagQuery.getTitle())
+                        .and(ratingAtLeast(audioTagQuery.getRatingAtLeast())))
+        );
     }
 
     public List<AudioTag> findAll() {

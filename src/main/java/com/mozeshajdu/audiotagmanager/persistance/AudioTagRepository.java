@@ -25,4 +25,9 @@ public interface AudioTagRepository extends JpaRepository<AudioTag, Long>, JpaSp
                         )
                 );
     }
+
+    static Specification<AudioTag> ratingAtLeast(Integer rating) {
+        return (audioTag, criteriaQuery, criteriaBuilder) ->
+                criteriaBuilder.greaterThanOrEqualTo(audioTag.get("rating"), rating);
+    }
 }
