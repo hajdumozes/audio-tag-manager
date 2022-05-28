@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -23,5 +25,10 @@ public class SpotifyTrackService {
         } catch (DataIntegrityViolationException e) {
             log.error(String.format("Could not save track (%s) due to constraint violation", track.toString()));
         }
+    }
+
+    public void setLiked(List<String> ids, boolean liked) {
+        List<SpotifyTrack> spotifyTracks = spotifyTrackRepository.findAllBySpotifyIdIn(ids);
+        spotifyTracks.forEach(spotifyTrack -> spotifyTrack.setLiked(liked));
     }
 }

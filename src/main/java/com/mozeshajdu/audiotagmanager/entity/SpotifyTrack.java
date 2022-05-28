@@ -57,6 +57,9 @@ public class SpotifyTrack {
     @Column(name = "url")
     String url;
 
+    @Column(name = "liked", columnDefinition = "boolean default false")
+    Boolean liked;
+
     @OneToOne
     @JoinColumn(name = "audio_tag_id", referencedColumnName = "id")
     AudioTag audioTag;
