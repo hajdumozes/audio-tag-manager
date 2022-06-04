@@ -14,6 +14,7 @@ The tags could be paired with tracks on spotify, which is done by another consum
 | `KAFKA_AUDIO_TAG_TOPIC`                   | string   |                                                    |  |
 | `KAFKA_SERVER`                            | string   |                                                    |  |
 | `KAFKA_SPOTIFY_TRACK_TOPIC`               | string   |                                                    |  |
+| `KAFKA_TRACK_LIKED_TOPIC`                 | string   |                                                    |  |
 | `DATASOURCE_USERNAME`                     | string   | mozeshajdu                                         |  |
 | `DATASOURCE_PASSWORD`                     | string   | mozeshajdu                                         |  |
 | `DATASOURCE_URL`                          | string   | jdbc:postgresql://localhost:5432/audiotag          |  |

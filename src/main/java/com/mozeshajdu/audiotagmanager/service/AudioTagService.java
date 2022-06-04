@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.mozeshajdu.audiotagmanager.persistance.AudioTagRepository.ratingAtLeast;
+import static com.mozeshajdu.audiotagmanager.persistance.AudioTagRepository.spotifyTrackIdIsPresent;
 import static com.mozeshajdu.audiotagmanager.persistance.AudioTagRepository.titleContains;
 
 @Service
@@ -25,10 +26,17 @@ public class AudioTagService {
     AudioTagRepository audioTagRepository;
 
     public List<AudioTag> find(AudioTagQuery audioTagQuery) {
-        return audioTagRepository.findAll(
-                Specification.where(titleContains(audioTagQuery.getTitle())
-                        .and(ratingAtLeast(audioTagQuery.getRatingAtLeast())))
-        );
+        Specification<AudioTag> specification = Specification.where(null);
+        if (audioTagQuery.getTitle() != null) {
+            specification = specification.and(titleContains(audioTagQuery.getTitle()));
+        }
+        if (audioTagQuery.getRatingAtLeast() != null) {
+            specification = specification.and(ratingAtLeast(audioTagQuery.getRatingAtLeast()));
+        }
+        if (audioTagQuery.getSpotifyTrackPresence() != null) {
+            specification = specification.and(spotifyTrackIdIsPresent(audioTagQuery.getSpotifyTrackPresence()));
+        }
+        return audioTagRepository.findAll(specification);
     }
 
     public List<AudioTag> findAll() {

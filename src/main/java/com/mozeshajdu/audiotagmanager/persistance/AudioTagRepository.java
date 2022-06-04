@@ -26,8 +26,15 @@ public interface AudioTagRepository extends JpaRepository<AudioTag, Long>, JpaSp
                 );
     }
 
-    static Specification<AudioTag> ratingAtLeast(Integer rating) {
+    static Specification<AudioTag> ratingAtLeast(int rating) {
         return (audioTag, criteriaQuery, criteriaBuilder) ->
                 criteriaBuilder.greaterThanOrEqualTo(audioTag.get("rating"), rating);
+    }
+
+    static Specification<AudioTag> spotifyTrackIdIsPresent(boolean isPresent) {
+        return (audioTag, criteriaQuery, criteriaBuilder) ->
+                isPresent ?
+                        criteriaBuilder.isNotNull(audioTag.get("spotifyTrack")) :
+                        criteriaBuilder.isNull(audioTag.get("spotifyTrack"));
     }
 }
