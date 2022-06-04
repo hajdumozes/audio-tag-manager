@@ -23,4 +23,9 @@ public class PlaylistService {
             log.error(String.format("Could not save playlist (%s) due to constraint violation", playlist.toString()));
         }
     }
+
+    public void delete(String spotifyId) {
+        playlistRepository.findBySpotifyId(spotifyId)
+                .ifPresent(playlistRepository::delete);
+    }
 }
