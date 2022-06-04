@@ -1,4 +1,4 @@
-package com.mozeshajdu.audiotagmanager.event;
+package com.mozeshajdu.audiotagmanager.event.entity;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -9,19 +9,22 @@ import lombok.experimental.FieldDefaults;
 
 import java.util.Set;
 
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class SpotifyTrackMessage {
-    String spotifyId;
-    String name;
-    String album;
-    String releaseDate;
+public class AudioTagMessage {
+
+    String title;
     Set<String> artists;
-    Integer popularity;
-    String trackNumber;
-    String url;
-    Long audioTagId;
+    Set<String> albumArtists;
+    String album;
+    String year;
+    String track;
+    Set<String> genres;
+    String grouping;
+    String rating;
 }
+

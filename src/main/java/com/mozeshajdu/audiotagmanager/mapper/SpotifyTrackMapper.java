@@ -1,7 +1,7 @@
 package com.mozeshajdu.audiotagmanager.mapper;
 
 import com.mozeshajdu.audiotagmanager.entity.SpotifyTrack;
-import com.mozeshajdu.audiotagmanager.event.SpotifyTrackMessage;
+import com.mozeshajdu.audiotagmanager.event.entity.SpotifyTrackMessage;
 import com.mozeshajdu.audiotagmanager.service.ArtistService;
 import com.mozeshajdu.audiotagmanager.service.AudioTagService;
 import com.mozeshajdu.audiotagmanager.web.dto.SpotifyTrackDto;

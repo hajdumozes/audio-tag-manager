@@ -1,5 +1,6 @@
-package com.mozeshajdu.audiotagmanager.event;
+package com.mozeshajdu.audiotagmanager.event.consumer;
 
+import com.mozeshajdu.audiotagmanager.event.entity.SpotifyTrackMessage;
 import com.mozeshajdu.audiotagmanager.mapper.SpotifyTrackMapper;
 import com.mozeshajdu.audiotagmanager.service.SpotifyTrackService;
 import lombok.AccessLevel;

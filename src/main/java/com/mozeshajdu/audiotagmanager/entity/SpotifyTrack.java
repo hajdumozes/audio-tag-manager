@@ -48,6 +48,12 @@ public class SpotifyTrack {
             inverseJoinColumns = @JoinColumn(foreignKey = @ForeignKey(name = "artist_id")))
     List<Artist> artists;
 
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "spotify_track_playlist",
+            joinColumns = @JoinColumn(foreignKey = @ForeignKey(name = "spotify_track_id")),
+            inverseJoinColumns = @JoinColumn(foreignKey = @ForeignKey(name = "playlist_id")))
+    List<Playlist> playlists;
+
     @Column(name = "popularity")
     Integer popularity;
 

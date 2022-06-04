@@ -1,5 +1,6 @@
-package com.mozeshajdu.audiotagmanager.event;
+package com.mozeshajdu.audiotagmanager.event.consumer;
 
+import com.mozeshajdu.audiotagmanager.event.entity.AudioTagMessage;
 import com.mozeshajdu.audiotagmanager.mapper.AudioTagMapper;
 import com.mozeshajdu.audiotagmanager.service.AudioTagService;
 import lombok.AccessLevel;

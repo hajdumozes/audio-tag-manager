@@ -4,7 +4,7 @@ import com.mozeshajdu.audiotagmanager.entity.AlbumArtist;
 import com.mozeshajdu.audiotagmanager.entity.Artist;
 import com.mozeshajdu.audiotagmanager.entity.AudioTag;
 import com.mozeshajdu.audiotagmanager.entity.Genre;
-import com.mozeshajdu.audiotagmanager.event.AudioTagMessage;
+import com.mozeshajdu.audiotagmanager.event.entity.AudioTagMessage;
 import com.mozeshajdu.audiotagmanager.service.AlbumArtistService;
 import com.mozeshajdu.audiotagmanager.service.ArtistService;
 import com.mozeshajdu.audiotagmanager.service.GenreService;

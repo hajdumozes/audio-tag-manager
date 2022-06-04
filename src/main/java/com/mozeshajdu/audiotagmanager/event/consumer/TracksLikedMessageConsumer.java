@@ -1,5 +1,7 @@
-package com.mozeshajdu.audiotagmanager.event;
+package com.mozeshajdu.audiotagmanager.event.consumer;
 
+import com.mozeshajdu.audiotagmanager.event.entity.SpotifyAction;
+import com.mozeshajdu.audiotagmanager.event.entity.TracksLikedMessage;
 import com.mozeshajdu.audiotagmanager.service.SpotifyTrackService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
