@@ -3,12 +3,12 @@ server:
 spring:
   cloud.stream:
     function:
-      definition: consumeAudioTags;consumeSpotifyTracks;consumeTracksLikedMessage;consumePlaylistCreatedMessage;consumePlaylistDeleted
+      definition: consumeAudioTags;consumeSpotifyTracks;consumeTracksLiked;consumePlaylistCreated;consumePlaylistDeleted
       bindings:
         consumeAudioTags-in-0: audio-tag
         consumeSpotifyTracks-in-0: spotify-track
-        consumeTracksLikedMessage-in-0: liked-tracks
-        consumePlaylistCreatedMessage-in-0: playlist-created
+        consumeTracksLiked-in-0: liked-tracks
+        consumePlaylistCreated-in-0: playlist-created
         consumePlaylistDeleted-in-0: playlist-deleted
     bindings:
       audio-tag:

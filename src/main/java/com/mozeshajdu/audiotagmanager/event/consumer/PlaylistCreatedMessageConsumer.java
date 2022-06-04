@@ -15,7 +15,7 @@ import javax.transaction.Transactional;
 import java.util.function.Consumer;
 
 @Component
-@Qualifier("consumePlaylistCreatedMessage")
+@Qualifier("consumePlaylistCreated")
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
 @Slf4j

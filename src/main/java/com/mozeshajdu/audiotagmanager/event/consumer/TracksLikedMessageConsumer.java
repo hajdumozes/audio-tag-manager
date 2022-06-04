@@ -14,7 +14,7 @@ import javax.transaction.Transactional;
 import java.util.function.Consumer;
 
 @Component
-@Qualifier("consumeTracksLikedMessage")
+@Qualifier("consumeTracksLiked")
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
 @Slf4j
