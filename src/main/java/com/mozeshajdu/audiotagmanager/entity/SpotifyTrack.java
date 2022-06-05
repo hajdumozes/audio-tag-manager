@@ -60,6 +60,9 @@ public class SpotifyTrack {
     @Column(name = "track_number")
     String trackNumber;
 
+    @Column(name = "uri")
+    String uri;
+
     @Column(name = "url")
     String url;
 

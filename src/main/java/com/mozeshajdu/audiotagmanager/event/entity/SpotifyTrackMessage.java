@@ -23,5 +23,6 @@ public class SpotifyTrackMessage {
     Integer popularity;
     String trackNumber;
     String url;
+    String uri;
     Long audioTagId;
 }

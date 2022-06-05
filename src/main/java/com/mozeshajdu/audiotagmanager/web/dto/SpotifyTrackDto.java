@@ -26,4 +26,6 @@ public class SpotifyTrackDto {
     String trackNumber;
 
     String url;
+
+    String uri;
 }
