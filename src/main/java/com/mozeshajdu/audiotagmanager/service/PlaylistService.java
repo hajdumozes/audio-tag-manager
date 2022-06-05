@@ -1,6 +1,7 @@
 package com.mozeshajdu.audiotagmanager.service;
 
 import com.mozeshajdu.audiotagmanager.entity.Playlist;
+import com.mozeshajdu.audiotagmanager.entity.SpotifyTrack;
 import com.mozeshajdu.audiotagmanager.persistance.PlaylistRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -9,12 +10,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Slf4j
 public class PlaylistService {
     PlaylistRepository playlistRepository;
+    SpotifyTrackService spotifyTrackService;
 
     public void save(Playlist playlist) {
         try {
@@ -27,5 +31,11 @@ public class PlaylistService {
     public void delete(String spotifyId) {
         playlistRepository.findBySpotifyId(spotifyId)
                 .ifPresent(playlistRepository::delete);
+    }
+
+    public void addItems(String spotifyId, List<String> trackUris) {
+        List<SpotifyTrack> tracks = spotifyTrackService.findByUris(trackUris);
+        playlistRepository.findBySpotifyId(spotifyId)
+                .ifPresent(playlist -> playlist.getTracks().addAll(tracks));
     }
 }

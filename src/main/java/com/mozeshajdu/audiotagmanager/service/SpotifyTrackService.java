@@ -31,4 +31,8 @@ public class SpotifyTrackService {
         List<SpotifyTrack> spotifyTracks = spotifyTrackRepository.findAllBySpotifyIdIn(ids);
         spotifyTracks.forEach(spotifyTrack -> spotifyTrack.setLiked(liked));
     }
+
+    public List<SpotifyTrack> findByUris(List<String> uris) {
+        return spotifyTrackRepository.findAllByUriIn(uris);
+    }
 }

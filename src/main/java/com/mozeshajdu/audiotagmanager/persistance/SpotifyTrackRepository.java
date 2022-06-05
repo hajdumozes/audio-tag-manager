@@ -8,4 +8,6 @@ import java.util.List;
 public interface SpotifyTrackRepository extends JpaRepository<SpotifyTrack, Long> {
     List<SpotifyTrack> findAllBySpotifyIdIn(List<String> ids);
 
+    List<SpotifyTrack> findAllByUriIn(List<String> uris);
+
 }
