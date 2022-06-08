@@ -37,4 +37,13 @@ public interface AudioTagRepository extends JpaRepository<AudioTag, Long>, JpaSp
                         criteriaBuilder.isNotNull(audioTag.get("spotifyTrack")) :
                         criteriaBuilder.isNull(audioTag.get("spotifyTrack"));
     }
+
+    static Specification<AudioTag> groupingContains(String grouping) {
+        return (audioTag, criteriaQuery, criteriaBuilder) ->
+                criteriaBuilder.like(
+                        criteriaBuilder.lower(
+                                audioTag.get("grouping")), String.format(ANYTHING_BEFORE_AFTER_FORMAT, grouping.toLowerCase()
+                        )
+                );
+    }
 }

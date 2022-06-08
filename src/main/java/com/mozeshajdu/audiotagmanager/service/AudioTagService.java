@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import static com.mozeshajdu.audiotagmanager.persistance.AudioTagRepository.groupingContains;
 import static com.mozeshajdu.audiotagmanager.persistance.AudioTagRepository.ratingAtLeast;
 import static com.mozeshajdu.audiotagmanager.persistance.AudioTagRepository.spotifyTrackIdIsPresent;
 import static com.mozeshajdu.audiotagmanager.persistance.AudioTagRepository.titleContains;
@@ -35,6 +36,9 @@ public class AudioTagService {
         }
         if (audioTagQuery.getSpotifyTrackPresence() != null) {
             specification = specification.and(spotifyTrackIdIsPresent(audioTagQuery.getSpotifyTrackPresence()));
+        }
+        if (audioTagQuery.getGrouping() != null) {
+            specification = specification.and(groupingContains(audioTagQuery.getGrouping()));
         }
         return audioTagRepository.findAll(specification);
     }

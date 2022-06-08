@@ -10,4 +10,5 @@ public class AudioTagQuery {
     String title;
     Integer ratingAtLeast;
     Boolean spotifyTrackPresence;
+    String grouping;
 }
