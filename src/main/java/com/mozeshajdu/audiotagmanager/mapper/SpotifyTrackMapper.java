@@ -18,7 +18,8 @@ public interface SpotifyTrackMapper {
     @Mapping(target = "spotifyId", source = "spotifyId")
     SpotifyTrack of(SpotifyTrackMessage source);
 
-    List<SpotifyTrack> toDtoList(List<SpotifyTrack> source);
+    List<SpotifyTrackDto> toDtoList(List<SpotifyTrack> source);
 
+    @Mapping(target = "audioTagId", source = "audioTag.id")
     SpotifyTrackDto of(SpotifyTrack source);
 }

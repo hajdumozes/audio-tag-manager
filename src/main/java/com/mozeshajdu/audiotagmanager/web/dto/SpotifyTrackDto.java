@@ -28,4 +28,6 @@ public class SpotifyTrackDto {
     String url;
 
     String uri;
+
+    Long audioTagId;
 }
