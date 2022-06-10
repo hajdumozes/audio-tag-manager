@@ -4,11 +4,11 @@ spring:
   cloud.stream:
     function:
       definition:
-        "consumeAudioTags;/
-        consumeSpotifyTracks;/
-        consumeTracksLiked;/
-        consumePlaylistCreated;/
-        consumePlaylistDeleted;/
+        "consumeAudioTags;\
+        consumeSpotifyTracks;\
+        consumeTracksLiked;\
+        consumePlaylistCreated;\
+        consumePlaylistDeleted;\
         consumePlaylistItemAdded"
       bindings:
         consumeAudioTags-in-0: audio-tag
