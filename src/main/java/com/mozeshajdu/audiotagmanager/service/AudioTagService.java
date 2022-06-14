@@ -7,6 +7,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,7 @@ import static com.mozeshajdu.audiotagmanager.persistance.AudioTagRepository.titl
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Slf4j
 public class AudioTagService {
+    public static final List<String> IGNORED_PROPERTIES = List.of("id", "spotifyTrack");
     AudioTagRepository audioTagRepository;
 
     public List<AudioTag> find(AudioTagQuery audioTagQuery) {
@@ -64,6 +66,20 @@ public class AudioTagService {
     }
 
     public void save(AudioTag audioTag) {
+        Optional<AudioTag> optionalAudioTag =
+                audioTagRepository.findAudioTagByTitleAndAlbum(audioTag.getTitle(), audioTag.getAlbum());
+        if (optionalAudioTag.isPresent()) {
+            update(audioTag, optionalAudioTag.get());
+        } else {
+            persist(audioTag);
+        }
+    }
+
+    private void update(AudioTag incomingAudioTag, AudioTag audioTagInRepository) {
+        BeanUtils.copyProperties(incomingAudioTag, audioTagInRepository, IGNORED_PROPERTIES.toArray(String[]::new));
+    }
+
+    private void persist(AudioTag audioTag) {
         try {
             audioTagRepository.save(audioTag);
         } catch (DataIntegrityViolationException e) {

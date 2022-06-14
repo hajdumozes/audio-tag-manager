@@ -1,4 +1,3 @@
 - save database to a file, which could be stored on cloud
 - database migration lib usage (eg. flyway)
-- update tags by collecting them again (consumer should check db, then modify on match)
 - generic solution for pairing query parts to dto fields (eg. AudioTagService find)

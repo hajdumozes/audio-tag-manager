@@ -7,9 +7,12 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface AudioTagRepository extends JpaRepository<AudioTag, Long>, JpaSpecificationExecutor<AudioTag> {
+
+    Optional<AudioTag> findAudioTagByTitleAndAlbum(String title, String album);
 
     String ANYTHING_BEFORE_AFTER_FORMAT = "%%%s%%";
 
