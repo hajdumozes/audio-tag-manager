@@ -11,8 +11,8 @@ The tags could be paired with tracks on spotify, which is done by another consum
 
 | Name                                      | Format   | Default value                                      | Comment                                                    |
 |-------------------------------------------|----------|----------------------------------------------------|------------------------------------------------------------|
-| `KAFKA_AUDIO_TAG_TOPIC`                   | string   |                                                    |  |
-| `KAFKA_SERVER`                            | string   |                                                    |  |
+| `KAFKA_AUDIO_TAG_TOPIC`                   | string   | audio-tag-created                                  |  |
+| `KAFKA_SERVER`                            | string   | localhost:9093                                     |  |
 | `KAFKA_SPOTIFY_TRACK_TOPIC`               | string   | spotify-track-created                              |  |
 | `KAFKA_TRACK_LIKED_TOPIC`                 | string   | track-liked                                        |  |
 | `KAFKA_PLAYLIST_CREATED_TOPIC`            | string   | playlist-created                                   |  |
