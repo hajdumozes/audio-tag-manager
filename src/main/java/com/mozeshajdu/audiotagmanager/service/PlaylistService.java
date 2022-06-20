@@ -36,6 +36,11 @@ public class PlaylistService {
     public void addItems(String spotifyId, List<String> trackUris) {
         List<SpotifyTrack> tracks = spotifyTrackService.findByUris(trackUris);
         playlistRepository.findBySpotifyId(spotifyId)
-                .ifPresent(playlist -> playlist.getTracks().addAll(tracks));
+                .ifPresent(playlist -> persist(tracks, playlist));
+    }
+
+    private void persist(List<SpotifyTrack> tracks, Playlist playlist) {
+        playlist.getTracks().addAll(tracks);
+        tracks.forEach(track -> track.getPlaylists().add(playlist));
     }
 }
