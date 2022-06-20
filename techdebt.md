@@ -1,3 +1,4 @@
+- add only track to playlists which were not present before
 - get liked spotify tracks
 - save database to a file, which could be stored on cloud
 - database migration lib usage (eg. flyway)

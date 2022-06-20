@@ -30,13 +30,18 @@ public class PlaylistService {
 
     public void delete(String spotifyId) {
         playlistRepository.findBySpotifyId(spotifyId)
-                .ifPresent(playlistRepository::delete);
+                .ifPresent(this::delete);
     }
 
     public void addItems(String spotifyId, List<String> trackUris) {
         List<SpotifyTrack> tracks = spotifyTrackService.findByUris(trackUris);
         playlistRepository.findBySpotifyId(spotifyId)
                 .ifPresent(playlist -> persist(tracks, playlist));
+    }
+
+    private void delete(Playlist playlist) {
+        playlist.getTracks().forEach(spotifyTrack -> spotifyTrack.getPlaylists().remove(playlist));
+        playlistRepository.delete(playlist);
     }
 
     private void persist(List<SpotifyTrack> tracks, Playlist playlist) {
