@@ -49,14 +49,6 @@ public class AudioTagService {
         return audioTagRepository.findAll();
     }
 
-    public List<AudioTag> findTagsWithoutSpotifyConnection() {
-        return audioTagRepository.findAudioTagsBySpotifyTrackIsNull();
-    }
-
-    public List<AudioTag> findTagsWithSpotifyConnection() {
-        return audioTagRepository.findAudioTagsBySpotifyTrackIsNotNull();
-    }
-
     public Optional<AudioTag> findById(Long id) {
         return audioTagRepository.findById(id);
     }
@@ -65,13 +57,15 @@ public class AudioTagService {
         return findById(id).orElse(null);
     }
 
-    public void save(AudioTag audioTag) {
+    public boolean save(AudioTag audioTag) {
         Optional<AudioTag> optionalAudioTag =
                 audioTagRepository.findAudioTagByTitleAndAlbum(audioTag.getTitle(), audioTag.getAlbum());
         if (optionalAudioTag.isPresent()) {
             update(audioTag, optionalAudioTag.get());
+            return false;
         } else {
             persist(audioTag);
+            return true;
         }
     }
 

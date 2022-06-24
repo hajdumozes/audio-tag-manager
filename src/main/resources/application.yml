@@ -4,22 +4,24 @@ spring:
   cloud.stream:
     function:
       definition:
-        "consumeAudioTags;\
+        "consumeAudioTagCreated;\
         consumeSpotifyTracks;\
         consumeTracksLiked;\
         consumePlaylistCreated;\
         consumePlaylistDeleted;\
-        consumePlaylistItemAdded"
+        consumePlaylistItemAdded;\
+        produceAudioTagProcessed"
       bindings:
-        consumeAudioTags-in-0: audio-tag
+        consumeAudioTagCreated-in-0: audio-tag-created
         consumeSpotifyTracks-in-0: spotify-track
         consumeTracksLiked-in-0: liked-tracks
         consumePlaylistCreated-in-0: playlist-created
         consumePlaylistDeleted-in-0: playlist-deleted
         consumePlaylistItemAdded-in-0: playlist-item-added
+        produceAudioTagProcessed-out-0: audio-tag-processed
     bindings:
       audio-tag:
-        destination: ${KAFKA_AUDIO_TAG_TOPIC:audio-tag-created}
+        destination: ${KAFKA_AUDIO_TAG_CREATED_TOPIC:audio-tag-created}
       spotify-track:
         destination: ${KAFKA_SPOTIFY_TRACK_TOPIC:spotify-track-created}
       liked-tracks:
@@ -30,6 +32,8 @@ spring:
         destination: ${KAFKA_PLAYLIST_DELETED_TOPIC:playlist-deleted}
       playlist-item-added:
         destination: ${KAFKA_PLAYLIST_ITEM_ADDED_TOPIC:playlist-item-added}
+      audio-tag-processed:
+        destination: ${KAFKA_AUDIO_TAG_PROCESSED:audio-tag-processed}
     default-binder: kafka
     kafka:
       binder:

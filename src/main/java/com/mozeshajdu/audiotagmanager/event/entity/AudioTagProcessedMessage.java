@@ -9,14 +9,12 @@ import lombok.experimental.FieldDefaults;
 
 import java.util.Set;
 
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class AudioTagMessage {
-
+public class AudioTagProcessedMessage {
     String title;
     Set<String> artists;
     Set<String> albumArtists;
@@ -27,4 +25,3 @@ public class AudioTagMessage {
     String grouping;
     String rating;
 }
-
