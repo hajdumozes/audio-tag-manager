@@ -19,6 +19,7 @@ The tags could be paired with tracks on spotify, which is done by another consum
 | `KAFKA_PLAYLIST_DELETED_TOPIC`            | string   | playlist-deleted                                   |  |
 | `KAFKA_PLAYLIST_ITEM_ADDED_TOPIC`         | string   | playlist-item-added                                |  |
 | `KAFKA_AUDIO_TAG_PROCESSED_TOPIC`         | string   | audio-tag-processed                                |  |
+| `KAFKA_AUDIO_TAG_ADDED_TOPIC`             | string   | audio-tag-added                                    |  |
 | `DATASOURCE_USERNAME`                     | string   | mozeshajdu                                         |  |
 | `DATASOURCE_PASSWORD`                     | string   | mozeshajdu                                         |  |
 | `DATASOURCE_URL`                          | string   | jdbc:postgresql://localhost:5432/audiotag          |  |

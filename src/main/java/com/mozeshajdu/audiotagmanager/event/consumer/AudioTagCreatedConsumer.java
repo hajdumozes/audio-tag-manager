@@ -1,8 +1,7 @@
 package com.mozeshajdu.audiotagmanager.event.consumer;
 
 import com.mozeshajdu.audiotagmanager.event.entity.AudioTagCreatedMessage;
-import com.mozeshajdu.audiotagmanager.event.entity.AudioTagProcessedMessage;
-import com.mozeshajdu.audiotagmanager.event.producer.AudioTagProcessedProducer;
+import com.mozeshajdu.audiotagmanager.event.producer.AudioTagProducer;
 import com.mozeshajdu.audiotagmanager.mapper.AudioTagMapper;
 import com.mozeshajdu.audiotagmanager.service.AudioTagService;
 import lombok.AccessLevel;
@@ -24,15 +23,16 @@ public class AudioTagCreatedConsumer implements Consumer<AudioTagCreatedMessage>
 
     AudioTagMapper audioTagMapper;
     AudioTagService audioTagService;
-    AudioTagProcessedProducer audioTagProcessedProducer;
+    AudioTagProducer audioTagProducer;
 
     @Override
     @Transactional
     public void accept(AudioTagCreatedMessage audioTagCreatedMessage) {
         log.info("Received audioTagCreatedMessage: {}", audioTagCreatedMessage.toString());
         boolean saved = audioTagService.save(audioTagMapper.of(audioTagCreatedMessage));
+        audioTagProducer.produce(audioTagMapper.toProcessedMessage(audioTagCreatedMessage));
         if (saved) {
-            audioTagProcessedProducer.produce(audioTagMapper.toProcessedMessage(audioTagCreatedMessage));
+            audioTagProducer.produce(audioTagMapper.toAddedMessage(audioTagCreatedMessage));
         }
     }
 }

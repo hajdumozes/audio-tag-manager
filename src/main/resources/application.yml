@@ -10,7 +10,8 @@ spring:
         consumePlaylistCreated;\
         consumePlaylistDeleted;\
         consumePlaylistItemAdded;\
-        produceAudioTagProcessed"
+        produceAudioTagProcessed;\
+        produceAudioTagAdded"
       bindings:
         consumeAudioTagCreated-in-0: audio-tag-created
         consumeSpotifyTracks-in-0: spotify-track
@@ -19,6 +20,7 @@ spring:
         consumePlaylistDeleted-in-0: playlist-deleted
         consumePlaylistItemAdded-in-0: playlist-item-added
         produceAudioTagProcessed-out-0: audio-tag-processed
+        produceAudioTagAdded-out-0: audio-tag-added
     bindings:
       audio-tag:
         destination: ${KAFKA_AUDIO_TAG_CREATED_TOPIC:audio-tag-created}
@@ -34,6 +36,8 @@ spring:
         destination: ${KAFKA_PLAYLIST_ITEM_ADDED_TOPIC:playlist-item-added}
       audio-tag-processed:
         destination: ${KAFKA_AUDIO_TAG_PROCESSED:audio-tag-processed}
+      audio-tag-added:
+        destination: ${KAFKA_AUDIO_TAG_ADDED:audio-tag-added}
     default-binder: kafka
     kafka:
       binder:

@@ -4,6 +4,7 @@ import com.mozeshajdu.audiotagmanager.entity.AlbumArtist;
 import com.mozeshajdu.audiotagmanager.entity.Artist;
 import com.mozeshajdu.audiotagmanager.entity.AudioTag;
 import com.mozeshajdu.audiotagmanager.entity.Genre;
+import com.mozeshajdu.audiotagmanager.event.entity.AudioTagAddedMessage;
 import com.mozeshajdu.audiotagmanager.event.entity.AudioTagCreatedMessage;
 import com.mozeshajdu.audiotagmanager.event.entity.AudioTagProcessedMessage;
 import com.mozeshajdu.audiotagmanager.service.AlbumArtistService;
@@ -35,5 +36,7 @@ public interface AudioTagMapper {
     GenreDto toDto(Genre source);
 
     AudioTagProcessedMessage toProcessedMessage(AudioTagCreatedMessage source);
+
+    AudioTagAddedMessage toAddedMessage(AudioTagCreatedMessage source);
 
 }
